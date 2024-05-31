@@ -4,11 +4,14 @@ import App from './App.jsx'
 import './index.css'
 
 import { BrowserRouter } from 'react-router-dom'
+import GlabalState from './context/index.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <React.StrictMode>
-      <App />
+      <GlabalState>
+        <App />
+      </GlabalState>
     </React.StrictMode>
   </BrowserRouter>
 )
