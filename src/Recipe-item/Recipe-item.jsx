@@ -1,19 +1,18 @@
 import { Link } from "react-router-dom";
-/**
-+ * A functional component that renders a single recipe item.
-+ *
-+ * @param {Object} props - The component's props.
-+ * @param {Object} props.item - The recipe item data.
-+ * @param {string} props.item.id - The unique identifier of the recipe item.
-+ * @param {string} props.item.title - The title of the recipe item.
-+ * @param {string} props.item.publisher - The publisher of the recipe item.
-+ * @param {string} props.item.image_url - The URL of the recipe item's image.
-+ *
-+ * @returns {JSX.Element} - The JSX element representing the recipe item.
-+ */
+import PropTypes from 'prop-types';
+
+RecipeItem.propTypes = {
+    item: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        publisher: PropTypes.string.isRequired,
+        image_url: PropTypes.string.isRequired,
+    }),
+};
+
 export default function RecipeItem({ item }) {
     return (
-        <div className="flex flex-col w-80 overflow-hidden p-5 bg-white/75 shadow-xl gap-5 border-2 rounded-2xl border-white">
+        <li className="flex flex-col w-80 overflow-hidden p-5 bg-white/75 shadow-xl gap-5 border-2 rounded-2xl border-white">
             <div className="h-40 flex justify-center overflow-hidden items-center rounded-xl">
                 <img src={item?.image_url} alt="recipe item" className="block w-full" />
             </div>
@@ -31,6 +30,6 @@ export default function RecipeItem({ item }) {
                     Recipe Details
                 </Link>
             </div>
-        </div>
+        </li>
     );
 }

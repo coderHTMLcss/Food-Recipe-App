@@ -8,7 +8,7 @@ export default function Home() {
     if (loading) return <div>Loading...Please wait!</div>;
 
     return (
-        <div className="py-8 container mx-auto flex flex-wrap justify-center gap-10">
+        <ul className="py-8 container mx-auto flex flex-wrap justify-center gap-10">
             {recipeList && recipeList.length > 0 ? (
                 recipeList.map((item) => <RecipeItem key={item.id} item={item} />)
             ) : (
@@ -18,6 +18,6 @@ export default function Home() {
                     </p>
                 </div>
             )}
-        </div>
+        </ul>
     );
 }

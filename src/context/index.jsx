@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
+
 export const GlobalContext = createContext(null);
 
 export default function GlobalState({ children }) {
@@ -9,7 +10,7 @@ export default function GlobalState({ children }) {
     const [loading, setLoading] = useState(false);
     const [recipeList, setRecipeList] = useState([]);
     const [recipeDetailsData, setRecipeDetailsData] = useState(null);
-    const [favoritesList, setFavoritesList] = useState([])
+    const [favoritesList, setFavoritesList] = useState([]);
 
     const navigate = useNavigate()
 
@@ -33,26 +34,24 @@ export default function GlobalState({ children }) {
     }
 
     function handleAddToFavorite(getCurrentItem) {
-        console.log(getCurrentItem);
-        let cpyFavoritesList = [...favoritesList];
-        const index = cpyFavoritesList.findIndex(item => item.id === getCurrentItem.id)
+        let copyFavoritesList = [...favoritesList];
+        const index = copyFavoritesList.findIndex(item => item.id === getCurrentItem.id)
 
         if (index === -1) {
-            cpyFavoritesList.push(getCurrentItem)
+            copyFavoritesList.push(getCurrentItem)
         } else {
-            cpyFavoritesList.splice(index)
+            copyFavoritesList.splice(index)
         }
 
-        setFavoritesList(cpyFavoritesList)
+        setFavoritesList(copyFavoritesList)
     }
-
-    console.log(favoritesList, 'favoritesList');
 
     return (
         <GlobalContext.Provider
             value={{
                 searchParam,
                 loading,
+                setLoading,
                 recipeList,
                 setSearchParam,
                 handleSubmit,
